@@ -31,7 +31,7 @@ const App2 = () => {
       app2: newStatus,
     }));
 
-    const ws = new WebSocket('ws://localhost:4000');
+    const ws = new WebSocket('ws://13.210.151.196:4000');
     ws.onopen = () => {
       ws.send(JSON.stringify({ app2: newStatus }));
       ws.close();
