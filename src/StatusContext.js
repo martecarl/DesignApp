@@ -10,7 +10,7 @@ export const StatusProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    const ws = new WebSocket('ws://[2001:4450:81d5:5300:70df:e9f6:7c02:873c]:4000');
+    const ws = new WebSocket('ws://localhost:4000');
 
     ws.onopen = () => {
       console.log('Connected to WebSocket server');
