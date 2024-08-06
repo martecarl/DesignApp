@@ -13,8 +13,8 @@ let statuses = {
 };
 
 // Create an HTTP server
-const server = app.listen(4000, '::', () => {
-  console.log('Server is running on http://[::]:4000');
+const server = app.listen(4000, () => {
+  console.log('Server is running on http://localhost:4000');
 });
 
 // Create a WebSocket server
