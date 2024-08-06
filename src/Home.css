@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap'); /* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+/* Apply Poppins font to all elements */
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.homepage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    padding-top: 20vh; /* Adjust padding-top for spacing */
+    width: 100%;
+}
+
+.content-container {
+    text-align: center; /* Align text to the center */
+    padding: 0 20px; /* Add padding to the content container */
+    max-width: 1200px; /* Set a max-width for larger screens */
+    width: 100%; /* Ensure it takes full width */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.status-container {
+    display: flex;
+    flex-direction: column; /* Align statuses vertically */
+    align-items: center;
+    margin-top: 20px;
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px; /* Adjust width as needed */
+    margin-bottom: 10px; /* Space between status items */
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 16px; /* Adjust font size */
+    font-weight: normal; /* Ensure the status text is bold */
+}
+
+.status.on {
+    background-color: #03878C;
+    color: white;
+}
+
+.status.off {
+    background-color: #ddd;
+    color: #333;
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Center align buttons horizontally */
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #03878C;
+    border: none;
+    color: white;
+    padding: 20px; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold; 
+    margin: 8px; 
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 60px; /* Set fixed width */
+    height: 60px; /* Set fixed height */
+}
+
+.button:hover {
+    background-color: #5b7274;
+    transform: scale(1.1); /* Scale the button on hover */
+    margin: 6px; /* Reduce the margin on hover */
+}
+
+.about-skidd-container {
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.choose {
+    margin-top: 50px;
+    font-size: 24px; /* Adjust the font size as needed */
+    font-weight: bold;
+    text-align: center;
+}
+
+.banner-image {
+    width: 40%; 
+    height: auto;
+    margin-top: -200px; 
+}
+
+/* Hover image styles */
+.hover-image {
+    display: none;
+    position: absolute;
+    bottom: -200px; /* Adjust the distance from the bottom as needed */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.button-container {
+    position: relative;
+}
+
+.button-container:hover .hover-image {
+    display: block;
+}

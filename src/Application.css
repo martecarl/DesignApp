@@ -1,0 +1,122 @@
+/* Global styles */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #03878C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent content overflow */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%; /* Adjust to occupy 90% of the viewport width */
+    max-width: 1200px; /* Optionally, set a max-width for larger screens */
+    margin: auto; /* Center the container horizontally */
+    padding: 20px; /* Add padding to space content from edges */
+    min-height: 100vh; /* Ensure container covers the full viewport height */
+}
+
+.contentContainer {
+    width: 100%; /* Occupy full width of .container */
+    margin: 0 auto; /* Center the content horizontally */
+    background-color: #1e2b33;
+    box-shadow: 0 0 50px -20px #03878C;
+    border-radius: 2%;
+    padding: 20px; /* Add padding for content spacing */
+}
+
+.formContainer {
+    background-color: #03878C;
+    box-shadow: 0 0 50px -20px #5b7274;
+    border-radius: 2%;
+    overflow: hidden;
+    padding: 20px; /* Add padding for content spacing */
+}
+
+.formHeaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 2px solid transparent;
+    background: #03878C;
+}
+
+.formHeader {
+    font-size: 90px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: #FFFFFF;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.formContentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.buttonContainer {
+    width: 100%;
+    background-color: #03878C;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.powerConsumptionContainer {
+    width: 100%;
+    padding: 20px;
+    background: #03878C;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    color: #FFFFFF;
+    padding-top: 20px;
+}
+
+.powerConsumptionTitle {
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.powerConsumptionList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.powerConsumptionListItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.homeButton {
+    background-color: #1e2b33;
+    width: 100%;
+    height: 40px;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 900;
+    font-size: 20px;
+    border-radius: 10px;
+    outline: none;
+    margin-bottom: 10px;
+    color: #FFFFFF; /* Text color */
+}
