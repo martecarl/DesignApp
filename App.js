@@ -7,7 +7,7 @@ const mysql = require('mysql2');
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:3000', // Replace with your frontend URL
+  origin: 'http://13.210.151.196:3000', // Replace with your frontend URL
   methods: ['GET', 'POST'], // Allow GET and POST requests
 }));
 
