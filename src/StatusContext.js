@@ -49,7 +49,7 @@ export const StatusProvider = ({ children }) => {
     try {
       await delay(1000);
 
-      const response = await fetch(`http://localhost:4000/power-consumption/${appId}`); // Replace with your backend API URL
+      const response = await fetch(`http://13.210.151.196:4000/power-consumption/${appId}`); // Replace with your backend API URL
       const data = await response.json();
 
       const convertWsToWh = (ws) => ws / 3600;
