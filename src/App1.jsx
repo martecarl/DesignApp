@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Typography, ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
@@ -15,14 +15,29 @@ const theme = createTheme({
 });
 
 const App1 = () => {
-  const { statuses, setStatuses } = useContext(StatusContext);
+  const { statuses, setStatuses, powerConsumptions, setPowerConsumptions, fetchPowerConsumption } = useContext(StatusContext);
   const app1Status = statuses.app1;
-  const [powerConsumption, setPowerConsumption] = useState({
-    lastOn: 0,
-    today: 0,
-    last7Days: 0,
-    last30Days: 0,
-  });
+  const app1PowerConsumption = powerConsumptions.app1;
+
+  useEffect(() => {
+    let intervalId;
+
+    if (app1Status) {
+      // Set up a timer to fetch power consumption data every second
+      intervalId = setInterval(() => {
+        fetchPowerConsumption('app1');
+      }, 10000); // 1000 milliseconds = 1 second
+
+      // Fetch data immediately on mount if the appliance is on
+      fetchPowerConsumption('app1');
+    } else {
+      // Clear the interval if the appliance is turned off
+      clearInterval(intervalId);
+    }
+
+    // Clean up the interval on component unmount or status change
+    return () => clearInterval(intervalId);
+  }, [app1Status, fetchPowerConsumption]);
 
   const handleToggleApp1 = () => {
     const newStatus = !app1Status;
@@ -37,10 +52,18 @@ const App1 = () => {
       ws.close();
     };
 
-    const newPowerConsumption = newStatus
-      ? { lastOn: 10, today: 20, last7Days: 50, last30Days: 200 }
-      : { lastOn: 0, today: 0, last7Days: 0, last30Days: 0 };
-    setPowerConsumption(newPowerConsumption);
+    // If turning off, manually clear power consumption values
+    if (!newStatus) {
+      setPowerConsumptions((prev) => ({
+        ...prev,
+        app1: {
+          lastOn: 0,
+          today: 0,
+          last7Days: 0,
+          last30Days: 0,
+        },
+      }));
+    }
   };
 
   return (
@@ -70,19 +93,19 @@ const App1 = () => {
                   <ul className="powerConsumptionList">
                     <li className="powerConsumptionListItem">
                       <span>Since Last On:</span>
-                      <span>{powerConsumption.lastOn} kWh</span>
+                      <span>{app1PowerConsumption.lastOn.toFixed(5)} Wh</span>
                     </li>
                     <li className="powerConsumptionListItem">
                       <span>Today:</span>
-                      <span>{powerConsumption.today} kWh</span>
+                      <span>{app1PowerConsumption.today.toFixed(5)} Wh</span>
                     </li>
                     <li className="powerConsumptionListItem">
                       <span>Last 7 Days:</span>
-                      <span>{powerConsumption.last7Days} kWh</span>
+                      <span>{app1PowerConsumption.last7Days.toFixed(5)} Wh</span>
                     </li>
                     <li className="powerConsumptionListItem">
                       <span>Last 30 Days:</span>
-                      <span>{powerConsumption.last30Days} kWh</span>
+                      <span>{app1PowerConsumption.last30Days.toFixed(5)} Wh</span>
                     </li>
                   </ul>
                 </div>

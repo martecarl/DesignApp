@@ -9,6 +9,12 @@ export const StatusProvider = ({ children }) => {
     app3: false,
   });
 
+  const [powerConsumptions, setPowerConsumptions] = useState({
+    app1: { lastOn: 0, today: 0, last7Days: 0, last30Days: 0 },
+    app2: { lastOn: 0, today: 0, last7Days: 0, last30Days: 0 },
+    app3: { lastOn: 0, today: 0, last7Days: 0, last30Days: 0 },
+  });
+
   useEffect(() => {
     const ws = new WebSocket('ws://13.210.151.196:4000');
 
@@ -38,9 +44,32 @@ export const StatusProvider = ({ children }) => {
       ws.close();
     };
   }, []);
+  const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+  const fetchPowerConsumption = async (appId) => {
+    try {
+      await delay(1000);
+
+      const response = await fetch(`http://localhost:4000/power-consumption/${appId}`); // Replace with your backend API URL
+      const data = await response.json();
+
+      const convertWsToWh = (ws) => ws / 3600;
+
+      setPowerConsumptions((prev) => ({
+        ...prev,
+        [appId]: {
+          lastOn: convertWsToWh(data.total_consumption_lastOn) || 0,
+          today: convertWsToWh(data.total_consumption_today) || 0,
+          last7Days: convertWsToWh(data.total_consumption_7days) || 0,
+          last30Days: convertWsToWh(data.total_consumption_30days) || 0,
+        },
+      }));
+    } catch (error) {
+      console.error('Error fetching power consumption data:', error);
+    }
+  };
 
   return (
-    <StatusContext.Provider value={{ statuses, setStatuses }}>
+    <StatusContext.Provider value={{ statuses, setStatuses, powerConsumptions, setPowerConsumptions, fetchPowerConsumption }}>
       {children}
     </StatusContext.Provider>
   );
