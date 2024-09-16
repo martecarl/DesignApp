@@ -59,8 +59,8 @@ export const StatusProvider = ({ children }) => {
         [appId]: {
           lastOn: convertWsToWh(data.total_consumption_lastOn) || 0,
           today: convertWsToWh(data.total_consumption_today) || 0,
-          last7Days: convertWsToWh(data.total_consumption_7days) || 0,
-          last30Days: convertWsToWh(data.total_consumption_30days) || 0,
+          last7Days: convertWsToWh(data.total_consumption_7Days) || 0,
+          last30Days: convertWsToWh(data.total_consumption_30Days) || 0,
         },
       }));
     } catch (error) {
