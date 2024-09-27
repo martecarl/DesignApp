@@ -73,7 +73,7 @@ const App3 = () => {
           <div className="formContainer">
             <div className="formHeaderContainer">
               <Typography variant="button" className="formHeader">
-                <span style={{ fontWeight: 'bold', color: '#FFFFFF' }}>Appliance 1</span>
+                <span style={{ fontWeight: 'bold', color: '#FFFFFF' }}>Appliance 3</span>
               </Typography>
             </div>
 
