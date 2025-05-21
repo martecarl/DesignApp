@@ -3,8 +3,8 @@
 #include <ArduinoJson.h>
 
 // WiFi credentials
-const char* ssid = "marts_2.4";
-const char* password = "M@rtewifi1803";
+const char* ssid = "WIFISSID";
+const char* password = "WIFIPASSWORD";
 
 // WebSocket server details
 const char* serverAddress = "192.168.1.5";  // Replace with your server's IP address
